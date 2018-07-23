@@ -1,11 +1,12 @@
 library(shiny)
 library(ggplot2)
-library(plotly)
-library(dplyr)
+library(plotly,warn.conflicts = FALSE)
+library(dplyr,warn.conflicts = FALSE)
 library(RColorBrewer)
 library(ggrepel)
 library(scales)
 library(reshape2)
+library(DT,warn.conflicts = FALSE)
 
 shinyUI(navbarPage("Youtube Video Analysis",
                    tabPanel("User Interact Data",
@@ -98,7 +99,8 @@ shinyUI(navbarPage("Youtube Video Analysis",
                                          textInput("wd_max", "Words Capacity", value=10)
                                        ),
                                        mainPanel(
-                                         plotOutput("Tag_keywords")
+                                         plotOutput("Tag_keywords"),
+                                         dataTableOutput("Channel_Rank")
                                        )
                                      ))
                                      

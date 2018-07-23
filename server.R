@@ -1,12 +1,12 @@
-library(plotly)
-library(dplyr)
+library(plotly,warn.conflicts = FALSE)
+library(dplyr,warn.conflicts = FALSE)
 library(ggplot2)
 library(RColorBrewer)
 #install.packages("ggrepel")
 library(ggrepel)
 library(scales)
 #source("~/Documents/NYC/Shiny Proj/Youtube/Shiny_youtube/helper.R", local = TRUE)
-source("~/helper.R", local = TRUE)
+source("./helper.R", local = TRUE)
 shinyServer(function(input,output){
   #source("~/Documents/NYC/Shiny Proj/Youtube/Shiny_youtube/helper.R", local = TRUE)
   output$PieChart=renderPlotly({
@@ -31,5 +31,9 @@ shinyServer(function(input,output){
   
   output$Trend2=renderPlot({
     return(Time_trend2(input$view_data,input$Trend_country,input$Trend_category))
+  })
+  
+  output$Channel_Rank=renderDataTable({
+    return(Channel(input$Tag_year,input$Tag_country,input$Tag_category))
   })
 })

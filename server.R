@@ -1,6 +1,10 @@
+
+
+library(ggplot2)
 library(plotly,warn.conflicts = FALSE)
 library(dplyr,warn.conflicts = FALSE)
-library(ggplot2)
+#install.packages("ggplot2",lib="/usr/local/lib/R/site-library")
+#library(ggplot2)
 library(RColorBrewer)
 #install.packages("ggrepel")
 library(ggrepel)

@@ -1,7 +1,9 @@
+library(ggplot2)
 library(magrittr)
 library(plotly,warn.conflicts = FALSE)
 library(dplyr,warn.conflicts = FALSE)
 # install.packages("ggplot2")
+#install.packages("ggplot2",lib="/usr/local/lib/R/site-library")
 library(ggplot2)
 library(RColorBrewer)
 library(scales)
@@ -12,6 +14,7 @@ library(scales)
 library(reshape2)
 library(DT,warn.conflicts = FALSE)
 library(lubridate,warn.conflicts = FALSE)
+#install.packages("ggplot2",lib="/usr/local/lib/R/site-library")
 
 # USA<-read.csv("~/Documents/NYC/Shiny Proj/Youtube/Shiny_youtube/Data/USvideos.csv",stringsAsFactors = FALSE)
 # Germ<-read.csv("~/Documents/NYC/Shiny Proj/Youtube/Shiny_youtube/Data/DEvideos.csv",stringsAsFactors = FALSE)
@@ -26,28 +29,31 @@ library(lubridate,warn.conflicts = FALSE)
 # Cana_Cate<-read.csv("~/Documents/NYC/Shiny Proj/Youtube/Shiny_youtube/Data/CA_category_id.csv",stringsAsFactors = FALSE)
 #
 
+# 
+# USA<-read.csv("./Data/USvideos.csv",stringsAsFactors = FALSE)
+# Germ<-read.csv("./Data/DEvideos.csv",stringsAsFactors = FALSE)
+# Fran<-read.csv("./Data/FRvideos.csv",stringsAsFactors = FALSE)
+# GB<-read.csv("./Data/GBvideos.csv",stringsAsFactors = FALSE)
+# Cana<-read.csv("./Data/CAvideos.csv",stringsAsFactors = FALSE)
+# # #
+# USA_Cate<-read.csv("./Data/US_category_id.csv",stringsAsFactors = FALSE)
+# Germ_Cate<-read.csv("./Data/DE_category_id.csv",stringsAsFactors = FALSE)
+# Fran_Cate<-read.csv("./Data/FR_category_id.csv",stringsAsFactors = FALSE)
+# GB_Cate<-read.csv("./Data/GB_category_id.csv",stringsAsFactors = FALSE)
+# Cana_Cate<-read.csv("./Data/CA_category_id.csv",stringsAsFactors = FALSE)
+# 
+# # #
+# # #
+# USA_all<- merge(USA,USA_Cate,by.x='category_id',by.y='id', all.x=TRUE)
+# Germ_all<- merge(Germ,Germ_Cate,by.x='category_id',by.y='id', all.x=TRUE)
+# Fran_all<- merge(Fran,Fran_Cate,by.x='category_id',by.y='id', all.x=TRUE)
+# GB_all<- merge(GB,GB_Cate,by.x='category_id',by.y='id', all.x=TRUE)
+# Cana_all<- merge(Cana,Cana_Cate,by.x='category_id',by.y='id', all.x=TRUE)
+# # #
+# Youtube_all<-rbind(USA_all,Germ_all,Fran_all,GB_all,Cana_all)
 
-USA<-read.csv("./Data/USvideos.csv",stringsAsFactors = FALSE)
-Germ<-read.csv("./Data/DEvideos.csv",stringsAsFactors = FALSE)
-Fran<-read.csv("./Data/FRvideos.csv",stringsAsFactors = FALSE)
-GB<-read.csv("./Data/GBvideos.csv",stringsAsFactors = FALSE)
-Cana<-read.csv("./Data/CAvideos.csv",stringsAsFactors = FALSE)
-# #
-USA_Cate<-read.csv("./Data/US_category_id.csv",stringsAsFactors = FALSE)
-Germ_Cate<-read.csv("./Data/DE_category_id.csv",stringsAsFactors = FALSE)
-Fran_Cate<-read.csv("./Data/FR_category_id.csv",stringsAsFactors = FALSE)
-GB_Cate<-read.csv("./Data/GB_category_id.csv",stringsAsFactors = FALSE)
-Cana_Cate<-read.csv("./Data/CA_category_id.csv",stringsAsFactors = FALSE)
+Youtube_all<-read.csv("./Data//Youtube_all.csv",stringsAsFactors = FALSE)
 
-# #
-# #
-USA_all<- merge(USA,USA_Cate,by.x='category_id',by.y='id', all.x=TRUE)
-Germ_all<- merge(Germ,Germ_Cate,by.x='category_id',by.y='id', all.x=TRUE)
-Fran_all<- merge(Fran,Fran_Cate,by.x='category_id',by.y='id', all.x=TRUE)
-GB_all<- merge(GB,GB_Cate,by.x='category_id',by.y='id', all.x=TRUE)
-Cana_all<- merge(Cana,Cana_Cate,by.x='category_id',by.y='id', all.x=TRUE)
-# #
-Youtube_all<-rbind(USA_all,Germ_all,Fran_all,GB_all,Cana_all)
 Youtube_all$publish_time <-substring(Youtube_all$publish_time,1,10)
 Youtube_all$publish_time <-as.Date(Youtube_all$publish_time,"%Y-%m-%d")
 Youtube_all$month<-format(Youtube_all$publish_time, "%Y-%m")

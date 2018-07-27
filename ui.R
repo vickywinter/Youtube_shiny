@@ -1,15 +1,15 @@
-library(shiny)
-library(ggplot2)
-library(plotly,warn.conflicts = FALSE)
-library(dplyr,warn.conflicts = FALSE)
-library(RColorBrewer)
-library(ggrepel)
-library(scales)
-library(reshape2)
-library(DT,warn.conflicts = FALSE)
+# library(shiny)
+# library(ggplot2)
+# library(plotly,warn.conflicts = FALSE)
+# library(dplyr,warn.conflicts = FALSE)
+# library(RColorBrewer)
+# library(ggrepel)
+# library(scales)
+# library(reshape2)
+# library(DT,warn.conflicts = FALSE)
 
 shinyUI(navbarPage("Youtube Video Analysis",
-                   tabPanel("User Interact Data",
+                   tabPanel("Market Share by Category",
                             fluidRow(
                               column(12,
                                      sidebarLayout(
